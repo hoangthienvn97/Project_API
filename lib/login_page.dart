@@ -10,7 +10,6 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
-
 String _emailDefault = 'abc@gmail.com';
 TextEditingController _emailController = TextEditingController();
 
