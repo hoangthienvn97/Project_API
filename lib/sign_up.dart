@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_api/common/pwd_field.dart';
+import 'package:project_api/value/strings.dart';
 import 'login_page.dart';
 
 class Signup extends StatefulWidget {
@@ -20,7 +22,7 @@ class _SignupState extends State<Signup> {
     _emailController.text = widget.email;
     super.initState();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     final logo = Hero(
@@ -36,36 +38,17 @@ class _SignupState extends State<Signup> {
       autofocus: false,
       controller: _emailController,
       decoration: InputDecoration(
-        hintText: 'Email',
+        hintText: Strings.signup_page_email,
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
     );
-    final password = TextFormField(
-      autofocus: false,
-      obscureText: true,
-      controller: _passController,
-      decoration: InputDecoration(
-        hintText: 'Mật Khẩu',
-        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
-      ),
-    );
-    final password2 = TextFormField(
-      autofocus: false,
-      obscureText: true,
-      controller: _passController,
-      decoration: InputDecoration(
-        hintText: 'Nhập lại mật khẩu',
-        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
-      ),
-    );
+
     final username = TextFormField(
       keyboardType: TextInputType.text,
       autofocus: false,
       decoration: InputDecoration(
-        hintText: 'Họ và Tên ',
+        hintText: Strings.signup_page_username,
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
@@ -82,11 +65,12 @@ class _SignupState extends State<Signup> {
         padding: EdgeInsets.all(12),
         color: Colors.green,
         child: Text(
-          'ĐĂNG KÝ',
+          Strings.signup_page_reg,
           style: TextStyle(color: Colors.white, fontSize: 17.0),
         ),
       ),
     );
+    TextEditingController _confirmController = TextEditingController();
     return Scaffold(
         backgroundColor: Colors.white,
         body: Center(
@@ -98,9 +82,9 @@ class _SignupState extends State<Signup> {
               SizedBox(height: 50.0),
               email,
               SizedBox(height: 15.0),
-              password,
+              PwdField(_passController),
               SizedBox(height: 24.0),
-              password2,
+              PwdField(_confirmController, type: PwdType.confirm),
               SizedBox(height: 24.0),
               username,
               SizedBox(height: 15.0),
