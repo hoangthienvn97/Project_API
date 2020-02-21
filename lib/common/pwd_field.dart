@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_api/value/strings.dart';
 
 class PwdField extends StatelessWidget {
   final TextEditingController controller;
@@ -14,7 +15,7 @@ class PwdField extends StatelessWidget {
       obscureText: true,
       controller: controller,
       decoration: InputDecoration(
-        hintText: type == PwdType.pwd ? "Nhập mật khẩu" : "Nhập lại mật khẩu",
+        hintText: type == PwdType.pwd ? Strings.pwd_field_pwd : Strings.pwd_field_pwd_agian,
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
