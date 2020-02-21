@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_api/value/strings.dart';
 import 'login_password.dart';
 import 'sign_up.dart';
 
@@ -9,11 +10,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
-String _emailDefault = 'abc@gmail.com';
-TextEditingController _emailController = TextEditingController();
-
-@override
+  String _emailDefault = 'abc@gmail.com';
+  TextEditingController _emailController = TextEditingController();
+  @override
   void initState() {
     _emailController.text = _emailDefault;
     super.initState();
@@ -26,7 +25,7 @@ TextEditingController _emailController = TextEditingController();
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
       decoration: InputDecoration(
-        hintText: 'Xin nhập email hoặc Tên đăng nhập',
+        hintText: Strings.login_page_login_title,
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
@@ -38,24 +37,25 @@ TextEditingController _emailController = TextEditingController();
           borderRadius: BorderRadius.circular(24),
         ),
         onPressed: () {
-          if(_emailController.text == "abc@gmail.com"){
+          if (_emailController.text == Strings.login_page_username_email) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => LoginPagePassword(_emailController.text.trim())),
+              MaterialPageRoute(
+                  builder: (context) =>
+                      LoginPagePassword(_emailController.text.trim())),
             );
-          }
-          else{
-             Navigator.push(
+          } else {
+            Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Signup(_emailController.text.trim())),
+              MaterialPageRoute(
+                  builder: (context) => Signup(_emailController.text.trim())),
             );
           }
-
         },
         padding: EdgeInsets.all(12),
         color: Colors.blue[300],
         child: Text(
-          'TIẾP TỤC',
+          Strings.login_page_continue,
           style: TextStyle(color: Colors.white, fontSize: 17.0),
         ),
       ),
@@ -68,8 +68,6 @@ TextEditingController _emailController = TextEditingController();
             shrinkWrap: true,
             padding: EdgeInsets.only(left: 24.0, right: 24.0),
             children: <Widget>[
-              // logo,
-              // SizedBox(height: 50.0),
               email,
               SizedBox(height: 15.0),
               loginButton,
