@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_api/value/strings.dart';
 import 'foreign_password.dart';
 import './company/select_company.dart';
 
@@ -37,7 +38,7 @@ class _LoginPagePasswordState extends State<LoginPagePassword> {
       autofocus: false,
       controller: _emailController,
       decoration: InputDecoration(
-        hintText: 'Email',
+        hintText: Strings.login_pwd_email,
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
@@ -47,7 +48,7 @@ class _LoginPagePasswordState extends State<LoginPagePassword> {
       controller: _passController,
       obscureText: true,
       decoration: InputDecoration(
-        hintText: 'Mật Khẩu',
+        hintText: Strings.login_pwd_pwd,
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
@@ -87,20 +88,20 @@ class _LoginPagePasswordState extends State<LoginPagePassword> {
         padding: EdgeInsets.all(12),
         color: Colors.green,
         child: Text(
-          'ĐĂNG NHẬP',
+          Strings.login_pwd_signin,
           style: TextStyle(color: Colors.white, fontSize: 17.0),
         ),
       ),
     );
     final forgotLabel = FlatButton(
       child: Text(
-        'Quên mật khẩu',
+        Strings.login_pwd_forget_pwd,
         style: TextStyle(color: Colors.purple, fontSize: 15),
       ),
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ForeignPassword()),
+          MaterialPageRoute(builder: (context) => ForgetPassword()),
         );
       },
     );
