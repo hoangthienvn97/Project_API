@@ -30,34 +30,31 @@ class _LoginPageState extends State<LoginPage> {
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
     );
-    final loginButton = Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
-      child: RaisedButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-        ),
-        onPressed: () {
-          if (_emailController.text == Strings.login_page_username_email) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      LoginPagePassword(_emailController.text.trim())),
-            );
-          } else {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Signup(_emailController.text.trim())),
-            );
-          }
-        },
-        padding: EdgeInsets.all(12),
-        color: Colors.blue[300],
-        child: Text(
-          Strings.login_page_continue,
-          style: TextStyle(color: Colors.white, fontSize: 17.0),
-        ),
+    final loginButton = RaisedButton(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+      ),
+      onPressed: () {
+        if (_emailController.text == Strings.login_page_username_email) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    LoginPagePassword(_emailController.text.trim())),
+          );
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Signup(_emailController.text.trim())),
+          );
+        }
+      },
+      padding: EdgeInsets.all(12),
+      color: Colors.blue[300],
+      child: Text(
+        Strings.login_page_continue,
+        style: TextStyle(color: Colors.white, fontSize: 17.0),
       ),
     );
 
@@ -68,9 +65,9 @@ class _LoginPageState extends State<LoginPage> {
             shrinkWrap: true,
             padding: EdgeInsets.only(left: 24.0, right: 24.0),
             children: <Widget>[
-              email,
-              SizedBox(height: 15.0),
-              loginButton,
+              Padding(padding: const EdgeInsets.only(top: 48), child: email),
+              Padding(
+                  padding: const EdgeInsets.only(top: 48), child: loginButton),
             ],
           ),
         ));
