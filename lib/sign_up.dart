@@ -53,7 +53,7 @@ class _SignupState extends State<Signup> {
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
     );
-    final SignupButton = Padding(
+    final signupButton = Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: RaisedButton(
         shape: RoundedRectangleBorder(
@@ -88,7 +88,7 @@ class _SignupState extends State<Signup> {
               SizedBox(height: 24.0),
               username,
               SizedBox(height: 15.0),
-              SignupButton,
+              signupButton,
             ],
           ),
         ));
