@@ -71,7 +71,7 @@ class _LoginPagePasswordState extends State<LoginPagePassword> {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text('Thông báo'),
+                    title: Text(Strings.login_pwd_notification),
                     content: const Text('Sai mật khẩu đăng nhập'),
                     actions: <Widget>[
                       FlatButton(
