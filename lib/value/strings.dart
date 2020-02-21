@@ -15,4 +15,5 @@ class Strings {
   static final String pwd_field_pwd_agian ='Nhập lại mật khẩu';
   static final String login_pwd_notification ='THÔNG BÁO';
   static final String login_pwd_err_pwd ='Sai mật khẩu đăng nhập';
+  static final String login_pwd_ok ='OK';
 }
