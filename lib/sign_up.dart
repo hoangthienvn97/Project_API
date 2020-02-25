@@ -53,23 +53,22 @@ class _SignupState extends State<Signup> {
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
     );
-    final signupButton = Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
-      child: RaisedButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-        ),
-        onPressed: () {
-          Navigator.of(context).pushNamed(LoginPage.tag);
-        },
-        padding: EdgeInsets.all(12),
-        color: Colors.green,
-        child: Text(
-          Strings.signup_page_reg,
-          style: TextStyle(color: Colors.white, fontSize: 17.0),
-        ),
+    
+    final signupButton = RaisedButton(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+      ),
+      onPressed: () {
+        Navigator.of(context).pushNamed(LoginPage.tag);
+      },
+      padding: EdgeInsets.all(12),
+      color: Colors.green,
+      child: Text(
+        Strings.signup_page_reg,
+        style: TextStyle(color: Colors.white, fontSize: 17.0),
       ),
     );
+
     TextEditingController _confirmController = TextEditingController();
     return Scaffold(
         backgroundColor: Colors.white,
@@ -81,14 +80,15 @@ class _SignupState extends State<Signup> {
               logo,
               SizedBox(height: 50.0),
               email,
-              SizedBox(height: 15.0),
+              Padding(padding: const EdgeInsets.only(top: 48), child: email),
               PwdField(_passController),
               SizedBox(height: 24.0),
               PwdField(_confirmController, type: PwdType.confirm),
               SizedBox(height: 24.0),
               username,
-              SizedBox(height: 15.0),
-              signupButton,
+              Padding(padding: const EdgeInsets.only(top: 48), child: username),
+              Padding(
+                  padding: const EdgeInsets.only(top: 48), child: signupButton),
             ],
           ),
         ));
