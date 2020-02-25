@@ -16,4 +16,19 @@ class Strings {
   static final String login_pwd_notification ='THÔNG BÁO';
   static final String login_pwd_err_pwd ='Sai mật khẩu đăng nhập';
   static final String login_pwd_ok ='OK';
+  static final String main='Project_API';
+  static final String create_cpny_name_cpny = 'Tên công ty';
+  static final String create_cpny_phone_cpny= 'Số điện thoại quản trị viên';
+  static final String create_cpny_continue= 'TIẾP THEO';
+  static final String create_cpny_title_bottom ='WISAMI sẽ tạo công ty sau khi xác minh số điện thoại';
+  static final String create_cpny_btn= 'TẠO CÔNG TY';
+  static final String login_pwd_pass = '12345678';
+  static final String select_cpny_textTop ='Bạn có thể truy cập vào các công ty mà mình đang làm việc để thao tác, hoặc công ty mà mình từng làm trước đây để xem thông tin cũ.';
+  static final String select_cpny_title ='CHỌN CÔNG TY';
+  static final String select_cpny_or ='HOẶC';
+  static final String select_cpny_button = "Create New Company";
+  static final String select_cpny_text = "Rồi thiết lập chính sách, và mời thành viên tham gia chấm công";
+  static final String logout_dialog_text_1 ="Do you want logout?";
+  static final String logout_dialog_text_2 ="Cancel";
+  static final String logout_dialog_text_3 = 'Logout';
 }
