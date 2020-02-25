@@ -53,46 +53,44 @@ class _LoginPagePasswordState extends State<LoginPagePassword> {
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
     );
-    final loginButton = Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
-      child: RaisedButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-        ),
-        onPressed: () {
-          if (_passController.text == "12345678") {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SelectCompany(),
-                ));
-          } else {
-            showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text(Strings.login_pwd_notification),
-                    content: Text(Strings.login_pwd_err_pwd),
-                    actions: <Widget>[
-                      FlatButton(
-                        child: Text(Strings.login_pwd_ok),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ],
-                  );
-                });
-          }
-        },
-        padding: EdgeInsets.all(12),
-        color: Colors.green,
-        child: Text(
-          Strings.login_pwd_signin,
-          style: TextStyle(color: Colors.white, fontSize: 17.0),
-        ),
+    final loginButton = RaisedButton(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+      ),
+      onPressed: () {
+        if (_passController.text == Strings.login_pwd_pass) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SelectCompany(),
+              ));
+        } else {
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text(Strings.login_pwd_notification),
+                  content: Text(Strings.login_pwd_err_pwd),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text(Strings.login_pwd_ok),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              });
+        }
+      },
+      padding: EdgeInsets.all(12),
+      color: Colors.green,
+      child: Text(
+        Strings.login_pwd_signin,
+        style: TextStyle(color: Colors.white, fontSize: 17.0),
       ),
     );
+
     final forgotLabel = FlatButton(
       child: Text(
         Strings.login_pwd_forget_pwd,
@@ -114,11 +112,10 @@ class _LoginPagePasswordState extends State<LoginPagePassword> {
             children: <Widget>[
               logo,
               SizedBox(height: 50.0),
-              email,
-              SizedBox(height: 15.0),
-              password,
-              SizedBox(height: 24.0),
-              loginButton,
+              Padding(padding: const EdgeInsets.only(top: 48), child: email),
+              Padding(padding: const EdgeInsets.only(top: 48), child: password),
+              Padding(
+                  padding: const EdgeInsets.only(top: 48), child: loginButton),
               forgotLabel
             ],
           ),
