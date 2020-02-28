@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_api/api/api.dart';
 import 'package:project_api/value/strings.dart';
 import 'login_password.dart';
 import 'sign_up.dart';
@@ -10,14 +11,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String _emailDefault = 'abc@gmail.com';
+  Api _api = Api();
+  bool _isBusy = false;
   TextEditingController _emailController = TextEditingController();
-  @override
-  void initState() {
-    _emailController.text = _emailDefault;
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     final email = TextFormField(
@@ -34,21 +30,24 @@ class _LoginPageState extends State<LoginPage> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
       ),
-      onPressed: () {
-        if (_emailController.text == Strings.login_page_username_email) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
+      onPressed: () async {
+        await _api.checkingUser(
+            gmail: _emailController.text,
+            onError: (error) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Signup(_emailController.text.trim())),
+              );
+            },
+            onSusses: (result) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
                     LoginPagePassword(_emailController.text.trim())),
-          );
-        } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => Signup(_emailController.text.trim())),
-          );
-        }
+              );
+            });
       },
       padding: EdgeInsets.all(12),
       color: Colors.blue[300],
