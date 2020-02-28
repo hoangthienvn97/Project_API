@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_api/common/pwd_field.dart';
 import 'package:project_api/value/strings.dart';
+import 'api/api.dart';
 import 'login_page.dart';
 
 class Signup extends StatefulWidget {
@@ -14,9 +15,10 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  Api _api = Api();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passController = TextEditingController();
-
+  TextEditingController _userController = TextEditingController();
   @override
   void initState() {
     _emailController.text = widget.email;
@@ -47,6 +49,7 @@ class _SignupState extends State<Signup> {
     final username = TextFormField(
       keyboardType: TextInputType.text,
       autofocus: false,
+      controller: _userController,
       decoration: InputDecoration(
         hintText: Strings.signup_page_username,
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -58,11 +61,19 @@ class _SignupState extends State<Signup> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
       ),
-      onPressed: () {
-        Navigator.of(context).pushNamed(LoginPage.tag);
+      onPressed: () async {
+        await _api.signUp(
+          gmail: _emailController.text,
+          password: _passController.text,
+          user: _userController.text,
+          onError: (error){},
+          onSusses: (token){
+            Navigator.of(context).pushNamed(LoginPage.tag);
+          }
+        );
       },
       padding: EdgeInsets.all(12),
-      color: Colors.green,
+      color: Colors.blue[300],
       child: Text(
         Strings.signup_page_reg,
         style: TextStyle(color: Colors.white, fontSize: 17.0),
@@ -79,16 +90,12 @@ class _SignupState extends State<Signup> {
             children: <Widget>[
               logo,
               SizedBox(height: 50.0),
-              email,
-              Padding(padding: const EdgeInsets.only(top: 48), child: email),
-              PwdField(_passController),
-              SizedBox(height: 24.0),
-              PwdField(_confirmController, type: PwdType.confirm),
-              SizedBox(height: 24.0),
-              username,
-              Padding(padding: const EdgeInsets.only(top: 48), child: username),
+              Padding(padding: const EdgeInsets.only(top:0), child: email),
+              Padding(padding: const EdgeInsets.only(top: 20), child:PwdField(_passController)),
+              Padding(padding: const EdgeInsets.only(top: 20), child: PwdField(_confirmController, type: PwdType.confirm)),
+              Padding(padding: const EdgeInsets.only(top: 20), child: username),
               Padding(
-                  padding: const EdgeInsets.only(top: 48), child: signupButton),
+                  padding: const EdgeInsets.only(top: 25), child: signupButton),
             ],
           ),
         ));
