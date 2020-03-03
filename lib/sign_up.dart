@@ -19,7 +19,7 @@ class _SignupState extends State<Signup> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passController = TextEditingController();
   TextEditingController _userController = TextEditingController();
-   TextEditingController _confirmController = TextEditingController();
+  TextEditingController _confirmController = TextEditingController();
   @override
   void initState() {
     _emailController.text = widget.email;
@@ -57,35 +57,33 @@ class _SignupState extends State<Signup> {
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
     );
-    
+
     final signupButton = RaisedButton(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
       ),
       onPressed: () async {
-        if(_passController.text == _confirmController.text){
+        if (_passController.text == _confirmController.text) {
           await _api.signUp(
-          gmail: _emailController.text,
-          password: _passController.text,
-          user: _userController.text,
-          onError: (error){
-            print(error);
-          },
-          onSusses: (data){
-            Navigator.of(context).pushNamed(LoginPage.tag);
-            print(data.toJson());
-          }
-        );
-        }else{
+              gmail: _emailController.text,
+              password: _passController.text,
+              user: _userController.text,
+              onError: (error) {
+                print(error);
+              },
+              onSusses: (data) {
+                Navigator.of(context).pushNamed(LoginPage.tag);
+                print(data.toJson());
+              });
+        } else {
           showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text('Khong trung mat khau'),
-                  );
-                });
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text('Không trùng mật khẩu'),
+                );
+              });
         }
-        
       },
       padding: EdgeInsets.all(12),
       color: Colors.blue[300],
@@ -104,9 +102,13 @@ class _SignupState extends State<Signup> {
             children: <Widget>[
               logo,
               SizedBox(height: 50.0),
-              Padding(padding: const EdgeInsets.only(top:0), child: email),
-              Padding(padding: const EdgeInsets.only(top: 20), child:PwdField(_passController)),
-              Padding(padding: const EdgeInsets.only(top: 20), child: PwdField(_confirmController, type: PwdType.confirm)),
+              Padding(padding: const EdgeInsets.only(top: 0), child: email),
+              Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: PwdField(_passController)),
+              Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: PwdField(_confirmController, type: PwdType.confirm)),
               Padding(padding: const EdgeInsets.only(top: 20), child: username),
               Padding(
                   padding: const EdgeInsets.only(top: 25), child: signupButton),
