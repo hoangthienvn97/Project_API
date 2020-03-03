@@ -74,10 +74,10 @@ class Api {
     try {
       Map<String, dynamic> value = json.decode(res.body);
       if (res.statusCode == 200) {
-        if(value['data'] != null){
+        if (value['data'] != null) {
           Data data = Data.fromJson(value['data']);
           onSusses(data);
-          return ;
+          return;
         }
         if (value['error_code'] == 11) {
           onError(value['error_code']);
