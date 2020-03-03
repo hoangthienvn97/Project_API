@@ -87,7 +87,8 @@ class _CreateNewCompanyState extends State<CreateNewCompany> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
       ),
-      onPressed: () {},
+      //TODO
+      // onPressed: () {},
       padding: EdgeInsets.all(12),
       color: Colors.blue[300],
       child: Text(
