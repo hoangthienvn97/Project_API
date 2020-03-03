@@ -80,7 +80,7 @@ class _SignupState extends State<Signup> {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  title: Text('Không trùng mật khẩu'),
+                  title: Text(Strings.sign_up_pwd),
                 );
               });
         }
