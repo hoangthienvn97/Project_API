@@ -12,7 +12,6 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   Api _api = Api();
-  bool _isBusy = false;
   TextEditingController _emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
