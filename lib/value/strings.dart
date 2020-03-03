@@ -32,14 +32,8 @@ class Strings {
   static final String logout_dialog_text_2 ="Cancel";
   static final String logout_dialog_text_3 = 'Logout';
   static final String api_checkin_onError_1 = 'No have user';
-  static final String api_checkin_onError_2 = 'Something get wrong';
-  static final String api_checkin_onError_3 = 'Error';
-  static final String api_login_onSusses = 'right';
-  static final String api_login_onError_1 = 'Wrong password';
-  static final String api_login_onError_2 = 'Something get wrong';
-  static final String api_login_onError_3 = 'Error';
-  static final String api_signup_onSusses = 'right';
-  static final String api_signup_onError_1 = 'Wrong password';
-  static final String api_signup_onError_2 = 'Something get wrong';
-  static final String api_signup_onError_3 = 'Error';
+  static final String api_Error = 'Error';
+  static final String api_right = 'right';
+  static final String api_Wrong = 'Wrong password';
+  static final String api_text = 'Something get wrong';
 }
