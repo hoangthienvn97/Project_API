@@ -1,15 +1,14 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:project_api/api/user.dart';
 import 'package:project_api/value/strings.dart';
+import '../common/config.dart';
 
 class Api {
   var client = http.Client;
   Future<void> checkingUser(
-      {String gmail,
-      Function(bool) onSusses, 
-      Function(String) onError}) async {
-    String url =
-        'https://auth-dev.wisami.com/oauth2/authorize?response_type=code&redirect_uri=https://auth-dev.wisami.com/oauth2/code&client_id=wisami_base_1522119499';
+      {String gmail, Function(bool) onSusses, Function(String) onError}) async {
+    String url = UrlList.url;
     Map<String, dynamic> body = {
       'phone': gmail,
       'pass': 'undefinecode348764765'
@@ -24,9 +23,9 @@ class Api {
         } else
           onError(Strings.api_checkin_onError_1);
       } else
-        onError(Strings.api_checkin_onError_2);
+        onError(Strings.api_text);
     } catch (e) {
-      onError(Strings.api_checkin_onError_3);
+      onError(Strings.api_Error);
     }
   }
 
@@ -35,8 +34,7 @@ class Api {
       String password,
       Function(String) onSusses,
       Function(String) onError}) async {
-    String url =
-        'https://auth-dev.wisami.com/oauth2/authorize?response_type=code&redirect_uri=https://auth-dev.wisami.com/oauth2/code&client_id=wisami_base_1522119499';
+    String url = UrlList.url;
     Map<String, dynamic> body = {'phone': gmail, 'pass': password};
     var res = await http.post(url, body: body);
 
@@ -45,15 +43,15 @@ class Api {
       if (res.statusCode == 200) {
         Map<String, dynamic> data = jsonDecode(res.body);
         if (data['error_code'] == 3) {
-          onSusses(Strings.api_login_onSusses);
+          onSusses(Strings.api_right);
         } else {
-          onError(Strings.api_login_onError_1);
+          onError(Strings.api_Wrong);
         }
       } else {
-        onError(Strings.api_checkin_onError_2);
+        onError(Strings.api_text);
       }
     } catch (e) {
-      onError(Strings.api_login_onError_3);
+      onError(Strings.api_Error);
     }
   }
 
@@ -61,30 +59,36 @@ class Api {
       {String gmail,
       String password,
       String user,
-      Function(String) onSusses,
+      Function(Data) onSusses,
       Function(String) onError}) async {
-    String url =
-        'https://auth-dev.wisami.com/user';
+    String url = UrlList.url_SignUp;
     Map<String, dynamic> body = {
-      'name': user, 
+      'name': user,
       'pass': password,
-      'email': gmail };
+      'email': gmail
+    };
     var res = await http.post(url, body: body);
 
     print("res body" + res.body);
+
     try {
+      Map<String, dynamic> value = json.decode(res.body);
       if (res.statusCode == 200) {
-        Map<String, dynamic> data = jsonDecode(res.body);
-        if (data['error_code'] == 11) {
-          onSusses(Strings.api_signup_onSusses);
+        if(value['data'] != null){
+          Data data = Data.fromJson(value['data']);
+          onSusses(data);
+          return ;
+        }
+        if (value['error_code'] == 11) {
+          onError(value['error_code']);
         } else {
-          onError(Strings.api_signup_onError_1);
+          onError('User not found');
         }
       } else {
-        onError(Strings.api_signup_onError_2);
+        onError(value['error_code']);
       }
     } catch (e) {
-      onError(Strings.api_signup_onError_3);
+      onError('Something get wrong');
     }
   }
 }
