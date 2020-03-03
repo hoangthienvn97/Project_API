@@ -36,15 +36,15 @@ class _LoginPageState extends State<LoginPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Signup(_emailController.text.trim())),
+                    builder: (context) => Signup(_emailController.text.trim())),
               );
             },
             onSusses: (result) {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>
-                    LoginPagePassword(_emailController.text.trim())),
+                    builder: (context) =>
+                        LoginPagePassword(_emailController.text.trim())),
               );
             });
       },
