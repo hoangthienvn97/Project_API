@@ -19,6 +19,7 @@ class _SignupState extends State<Signup> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passController = TextEditingController();
   TextEditingController _userController = TextEditingController();
+   TextEditingController _confirmController = TextEditingController();
   @override
   void initState() {
     _emailController.text = widget.email;
@@ -62,15 +63,29 @@ class _SignupState extends State<Signup> {
         borderRadius: BorderRadius.circular(24),
       ),
       onPressed: () async {
-        await _api.signUp(
+        if(_passController.text == _confirmController.text){
+          await _api.signUp(
           gmail: _emailController.text,
           password: _passController.text,
           user: _userController.text,
-          onError: (error){},
-          onSusses: (token){
+          onError: (error){
+            print(error);
+          },
+          onSusses: (data){
             Navigator.of(context).pushNamed(LoginPage.tag);
+            print(data.toJson());
           }
         );
+        }else{
+          showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('Khong trung mat khau'),
+                  );
+                });
+        }
+        
       },
       padding: EdgeInsets.all(12),
       color: Colors.blue[300],
@@ -80,7 +95,6 @@ class _SignupState extends State<Signup> {
       ),
     );
 
-    TextEditingController _confirmController = TextEditingController();
     return Scaffold(
         backgroundColor: Colors.white,
         body: Center(
