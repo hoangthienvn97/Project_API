@@ -32,9 +32,9 @@ class Strings {
   static final String logout_dialog_text_2 ="Cancel";
   static final String logout_dialog_text_3 = 'Logout';
   static final String api_checkin_onError_1 = 'No have user';
-  static final String api_Error = 'Error';
+  static final String api_error = 'Error';
   static final String api_right = 'right';
-  static final String api_Wrong = 'Wrong password';
+  static final String api_wrong = 'Wrong password';
   static final String api_text = 'Something get wrong';
   static final String sign_up_pwd = 'Không trùng mật khẩu';
 }
