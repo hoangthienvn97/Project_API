@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:project_api/api/user.dart';
+import 'package:project_api/api/data.dart';
 import 'package:project_api/value/strings.dart';
 import '../common/config.dart';
 
@@ -25,7 +25,7 @@ class Api {
       } else
         onError(Strings.api_text);
     } catch (e) {
-      onError(Strings.api_Error);
+      onError(Strings.api_error);
     }
   }
 
@@ -45,13 +45,13 @@ class Api {
         if (data['error_code'] == 3) {
           onSusses(Strings.api_right);
         } else {
-          onError(Strings.api_Wrong);
+          onError(Strings.api_wrong);
         }
       } else {
         onError(Strings.api_text);
       }
     } catch (e) {
-      onError(Strings.api_Error);
+      onError(Strings.api_error);
     }
   }
 
