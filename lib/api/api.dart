@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:project_api/api/data.dart';
+import 'package:project_api/api/user.dart';
 import 'package:project_api/value/strings.dart';
 import '../common/config.dart';
 
@@ -59,7 +59,7 @@ class Api {
       {String gmail,
       String password,
       String user,
-      Function(Data) onSusses,
+      Function(User) onSusses,
       Function(String) onError}) async {
     String url = UrlList.url_SignUp;
     Map<String, dynamic> body = {
@@ -75,7 +75,7 @@ class Api {
       Map<String, dynamic> value = json.decode(res.body);
       if (res.statusCode == 200) {
         if (value['data'] != null) {
-          Data data = Data.fromJson(value['data']);
+          User data = User.fromJson(value['data']);
           onSusses(data);
           return;
         }
