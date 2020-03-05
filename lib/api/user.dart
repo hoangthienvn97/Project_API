@@ -16,7 +16,7 @@ class User {
   final List<Email> emails;
   final bool isDeleted;
   final int timePassChange;
-  final String role_system;
+  final String roleSystem;
   final String createdAt;
   final String updateAt;
 
@@ -31,7 +31,7 @@ class User {
       this.emails,
       this.isDeleted,
       this.timePassChange,
-      this.role_system,
+      this.roleSystem,
       this.createdAt,
       this.updateAt);
 
