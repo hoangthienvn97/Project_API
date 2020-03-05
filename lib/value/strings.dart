@@ -31,7 +31,7 @@ class Strings {
   static final String logout_dialog_text_1 ="Do you want logout?";
   static final String logout_dialog_text_2 ="Cancel";
   static final String logout_dialog_text_3 = 'Logout';
-  static final String api_checkin_onError_1 = 'No have user';
+  static final String api_no_user = 'No have user';
   static final String api_error = 'Error';
   static final String api_right = 'right';
   static final String api_wrong = 'Wrong password';
