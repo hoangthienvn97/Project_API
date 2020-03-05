@@ -44,7 +44,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'emails': instance.emails,
       'isDeleted': instance.isDeleted,
       'timePassChange': instance.timePassChange,
-      'role_system': instance.role_system,
+      'role_system': instance.roleSystem,
       'createdAt': instance.createdAt,
       'updateAt': instance.updateAt,
     };
