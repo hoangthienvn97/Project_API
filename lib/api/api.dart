@@ -1,10 +1,14 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:project_api/api/logger.dart';
 import 'package:project_api/api/user.dart';
 import 'package:project_api/value/strings.dart';
 import '../common/config.dart';
+import 'package:logger/logger.dart';
 
 class Api {
+  final log = getLogger('className');
+
   var client = http.Client;
   Future<void> checkingUser(
       {String gmail, Function(bool) onSusses, Function(String) onError}) async {
@@ -21,11 +25,11 @@ class Api {
         if (data["error_code"] == 6) {
           onSusses(true);
         } else
-          onError(Strings.api_checkin_onError_1);
+          log.i(onError(Strings.api_no_user));
       } else
-        onError(Strings.api_text);
+        log.w(onError(Strings.api_text));
     } catch (e) {
-      onError(Strings.api_error);
+      log.d(onError(Strings.api_error));
     }
   }
 
@@ -45,13 +49,13 @@ class Api {
         if (data['error_code'] == 3) {
           onSusses(Strings.api_right);
         } else {
-          onError(Strings.api_wrong);
+          log.e(onError(Strings.api_wrong));
         }
       } else {
-        onError(Strings.api_text);
+        log.i(onError(Strings.api_text));
       }
     } catch (e) {
-      onError(Strings.api_error);
+      log.d(onError(Strings.api_error));
     }
   }
 
@@ -82,13 +86,13 @@ class Api {
         if (value['error_code'] == 11) {
           onError(value['error_code']);
         } else {
-          onError('User not found');
+          log.i(onError(Strings.api_no_user));
         }
       } else {
         onError(value['error_code']);
       }
     } catch (e) {
-      onError('Something get wrong');
+      log.i(onError(Strings.api_text));
     }
   }
 }
