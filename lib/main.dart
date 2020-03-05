@@ -6,6 +6,7 @@ import 'company/create_company.dart';
 import 'company/select_company.dart';
 import 'sign_up.dart';
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
