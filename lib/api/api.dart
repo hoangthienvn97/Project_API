@@ -18,7 +18,6 @@ class Api {
       'pass': 'undefinecode348764765'
     };
     var res = await http.post(url, body: body);
-    print("res body" + res.body);
     try {
       if (res.statusCode == 200) {
         Map<String, dynamic> data = jsonDecode(res.body);
@@ -41,8 +40,6 @@ class Api {
     String url = UrlList.url;
     Map<String, dynamic> body = {'phone': gmail, 'pass': password};
     var res = await http.post(url, body: body);
-
-    print("res body" + res.body);
     try {
       if (res.statusCode == 200) {
         Map<String, dynamic> data = jsonDecode(res.body);
@@ -72,9 +69,6 @@ class Api {
       'email': gmail
     };
     var res = await http.post(url, body: body);
-
-    print("res body" + res.body);
-
     try {
       Map<String, dynamic> value = json.decode(res.body);
       if (res.statusCode == 200) {
