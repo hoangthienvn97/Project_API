@@ -36,5 +36,6 @@ class Strings {
   static final String api_right = 'right';
   static final String api_wrong = 'Wrong password';
   static final String api_text = 'Something get wrong';
-  static final String sign_up_pwd = 'Không trùng mật khẩu';
+  static final String sign_up_pwd = 'Password does not match';
+  static final String select_cpny_join='CÔNG TY ĐÃ GIA NHẬP';
 }
