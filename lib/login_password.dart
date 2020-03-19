@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_api/api/api.dart';
 import 'package:project_api/value/strings.dart';
 import 'foreign_password.dart';
 import './company/select_company.dart';
@@ -13,7 +14,7 @@ class LoginPagePassword extends StatefulWidget {
 }
 
 class _LoginPagePasswordState extends State<LoginPagePassword> {
-  String _passDefauld = '12345678';
+  Api _api = Api();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passController = TextEditingController();
 
@@ -57,31 +58,35 @@ class _LoginPagePasswordState extends State<LoginPagePassword> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
       ),
-      onPressed: () {
-        if (_passController.text == Strings.login_pwd_pass) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SelectCompany(),
-              ));
-        } else {
-          showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text(Strings.login_pwd_notification),
-                  content: Text(Strings.login_pwd_err_pwd),
-                  actions: <Widget>[
-                    FlatButton(
-                      child: Text(Strings.login_pwd_ok),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
-                );
-              });
-        }
+      onPressed: () async {
+        await _api.login(
+            gmail: _emailController.text,
+            password: _passController.text,
+            onError: (error) {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text(Strings.login_pwd_notification),
+                    content: Text(error),
+                    actions: <Widget>[
+                      FlatButton(
+                        child: Text(Strings.login_pwd_ok),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                });
+            },
+            onSusses: (token) {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SelectCompany(),
+                  ));
+            });
       },
       padding: EdgeInsets.all(12),
       color: Colors.green,

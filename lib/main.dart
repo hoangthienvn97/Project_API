@@ -4,11 +4,14 @@ import 'package:project_api/value/strings.dart';
 import 'login_page.dart';
 import 'company/create_company.dart';
 import 'company/select_company.dart';
+import 'sign_up.dart';
+
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
-    LoginPage.tag: (context) => SelectCompany(),
+    LoginPage.tag: (context) => LoginPage(),
   };
 
   @override
@@ -22,7 +25,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: [const Locale('en', 'US')],
       title: Strings.main,
       debugShowCheckedModeBanner: false,
-      home: SelectCompany(),
+      home: LoginPage(),
       routes: routes,
     );
   }
