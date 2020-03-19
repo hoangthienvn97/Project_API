@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_api/company/logout_dialog.dart';
 import 'package:project_api/value/strings.dart';
 import './create_company.dart';
+import 'package:project_api/company_infor/checkIn_action.dart';
 
 class SelectCompany extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class SelectCompany extends StatefulWidget {
 
 class _SelectCompanyState extends State<SelectCompany> {
   List<String> datas = ["NovaLab", "LiyaLab", 'CodePSoft'];
-
+  List<String> data1= ["OpenWeb","FPT",'NovaHub'];
   @override
   Widget build(BuildContext context) {
     Widget textTop = new Container(
@@ -35,7 +36,6 @@ class _SelectCompanyState extends State<SelectCompany> {
                         logout: () {
                           //dismiss dialog
                           Navigator.of(context).pop();
-                          //handle logout event
                         },
                       );
                     });
@@ -51,7 +51,7 @@ class _SelectCompanyState extends State<SelectCompany> {
                 child: textTop,
               ),
               Expanded(
-                flex: 4,
+                flex: 2,
                 child: ListView(
                     children: datas
                         .asMap()
@@ -64,7 +64,26 @@ class _SelectCompanyState extends State<SelectCompany> {
                               title: Text(value),
                               onTap: () {
                                 print("$value");
+                                Divider();
                               },
+                            ),
+                          ),
+                        )
+                        .values
+                        .toList()),
+              ),
+              Expanded(
+                flex: 2,
+                child: ListView(
+                    children: data1
+                        .asMap()
+                        .map(
+                          (index, value) => MapEntry(
+                            index,
+                            ListTile(
+                              leading: Icon(Icons.people),
+                              trailing: Icon(Icons.arrow_right),
+                              title: Text(value),
                             ),
                           ),
                         )
