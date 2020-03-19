@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 import '../api/email.dart';
 import '../api/phone.dart';
 import '../api/username.dart';
+import '../api/company.dart';
 part 'user.g.dart';
 
 @JsonSerializable()
@@ -19,6 +20,7 @@ class User {
   final String roleSystem;
   final String createdAt;
   final String updateAt;
+  final List<Company> companies;
 
   User(
       this.type,
@@ -33,7 +35,8 @@ class User {
       this.timePassChange,
       this.roleSystem,
       this.createdAt,
-      this.updateAt);
+      this.updateAt,
+      this.companies);
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
