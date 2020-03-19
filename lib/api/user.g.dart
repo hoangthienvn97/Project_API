@@ -27,9 +27,13 @@ User _$UserFromJson(Map<String, dynamic> json) {
         ?.toList(),
     json['isDeleted'] as bool,
     json['timePassChange'] as int,
-    json['role_system'] as String,
+    json['roleSystem'] as String,
     json['createdAt'] as String,
     json['updateAt'] as String,
+    (json['companies'] as List)
+        ?.map((e) =>
+            e == null ? null : Company.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
   );
 }
 
@@ -44,7 +48,8 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'emails': instance.emails,
       'isDeleted': instance.isDeleted,
       'timePassChange': instance.timePassChange,
-      'role_system': instance.roleSystem,
+      'roleSystem': instance.roleSystem,
       'createdAt': instance.createdAt,
       'updateAt': instance.updateAt,
+      'companies': instance.companies,
     };

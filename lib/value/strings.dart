@@ -38,4 +38,17 @@ class Strings {
   static final String api_text = 'Something get wrong';
   static final String sign_up_pwd = 'Password does not match';
   static final String select_cpny_join='CÔNG TY ĐÃ GIA NHẬP';
+  static final String dbscreen_policy='Chính sách';
+  static final String dbscreen_personnel='Nhân Sự';
+  static final String timekeeping='Chấm Công';
+  static final String dbscreen_resignation='Đơn Từ';
+  static final String dbscreen_cpny ='Công Ty';
+  static final String ci_st1 ='No WI-FI';
+  static final String ci_st2 ='NOVAHUB TECHNOLOGY : f0:9f:c2:31:99:c8';
+  static final String ci_name_cpny = 'NOVAHUB';
+  static final String ci_cout ='Checkout';
+  static final String ci_cin ='Checkin';
+  static final String ci_start='  Bắt Đầu Ca';
+  static final String ci_clock='13:00:00';
+  static final String ci_btn ='Check Connection';
 }
