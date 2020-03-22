@@ -27,11 +27,4 @@ class MyApp extends StatelessWidget {
       routes: routes,
     );
   }
-  // @override
-  // Widget build(BuildContext context) {
-  //   return new MaterialApp(
-  //     debugShowCheckedModeBanner: false,
-  //     home: DashboardScreen(),
-  //   );
-  // }
 }
