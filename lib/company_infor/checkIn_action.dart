@@ -4,28 +4,23 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/rendering.dart';
 import '../value/strings.dart';
 
-class KeyValuePairDropdown extends StatefulWidget {
+class CheckInAction extends StatefulWidget {
   @override
-  KeyValuePairDropdownState createState() {
-    return new KeyValuePairDropdownState();
+  CheckInActionState createState() {
+    return new CheckInActionState();
   }
 }
 
-class KeyValuePairDropdownState extends State<KeyValuePairDropdown> {
+class CheckInActionState extends State<CheckInAction> {
   bool checkinSuccess = false;
-  String _networkStatus1 = '';
+  String networkStatus = '';
   Connectivity connectivity = Connectivity();
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
-    void checkConnectivity1() async {
+  void checkConnect() async {
     var connectivityResult = await connectivity.checkConnectivity();
     var conn = getConnectionValue(connectivityResult);
     setState(() {
-      _networkStatus1 = conn;
+      networkStatus = conn;
     });
   }
 
@@ -33,10 +28,10 @@ class KeyValuePairDropdownState extends State<KeyValuePairDropdown> {
     String status = '';
     switch (connectivityResult) {
       case ConnectivityResult.mobile:
-        status = Strings.ci_st1;
+        return Strings.ci_st1;
         break;
       case ConnectivityResult.wifi:
-        status = Strings.ci_st2;
+        return Strings.ci_st2;
         break;
     }
     return status;
@@ -57,11 +52,14 @@ class KeyValuePairDropdownState extends State<KeyValuePairDropdown> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(top: 42, bottom: 16),
-                    child: Text(Strings.timekeeping.toUpperCase()),
+                    child: Text(
+                      Strings.timekeeping.toUpperCase(),
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   Container(
                       margin:
-                          EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(vertical: 16),
                       decoration: BoxDecoration(
@@ -85,11 +83,11 @@ class KeyValuePairDropdownState extends State<KeyValuePairDropdown> {
                     Text(Strings.ci_name_cpny)
                   ],
                 ),
-                Text(_networkStatus1),
+                Text(networkStatus),
                 OutlineButton(
                   child: Text(Strings.ci_btn),
                   onPressed: () {
-                    checkConnectivity1();
+                    checkConnect();
                   },
                 ),
               ],
@@ -103,7 +101,7 @@ class KeyValuePairDropdownState extends State<KeyValuePairDropdown> {
             },
             child: Container(
               width: size.width * (1 / 2),
-              height: size.width * (1 / 2),
+              height: size.width * (1 / 3),
               alignment: Alignment.center,
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -131,7 +129,7 @@ class KeyValuePairDropdownState extends State<KeyValuePairDropdown> {
                     Icons.calendar_today,
                     color: Colors.blue,
                   ),
-                  Text("${_dateTime.toString()}"),
+                  Text(_dateTime.toString()),
                 ],
               ),
             ),
@@ -195,4 +193,4 @@ class KeyValuePairDropdownState extends State<KeyValuePairDropdown> {
       _dateTime = _t;
     });
   }
-} 
+}
