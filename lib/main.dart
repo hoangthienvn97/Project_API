@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:project_api/value/strings.dart';
 import 'login_page.dart';
-import 'company/create_company.dart';
-import 'company/select_company.dart';
-import 'sign_up.dart';
-
+import './company_infor/checkIn_action.dart';
+import './narbar/dashboardscreen.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
-    LoginPage.tag: (context) => LoginPage(),
+    LoginPage.tag: (context) => DashboardScreen(),
   };
 
   @override
@@ -25,7 +23,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: [const Locale('en', 'US')],
       title: Strings.main,
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: DashboardScreen(),
       routes: routes,
     );
   }

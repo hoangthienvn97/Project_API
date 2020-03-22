@@ -23,7 +23,8 @@ dependencies:
   shared_preferences: any
   json_annotation: any
   logger: ^0.6.0
-  # logging: ^0.11.4
+  connectivity: ^0.4.8+2
+  provider: ^2.0.1
 
   cupertino_icons: ^0.1.2
   image_picker: ^0.6.3+1
