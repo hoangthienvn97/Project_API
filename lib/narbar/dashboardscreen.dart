@@ -15,7 +15,7 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   
   PageController _pageController;
-  int _page = 0;
+  int _page = 2;
 
   @override
   void initState() {
@@ -47,7 +47,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         children: [
           new Policy(Strings.dbscreen_policy),
           new Personnel(Strings.dbscreen_personnel),
-          new KeyValuePairDropdown(), //Cham cong
+          new CheckInAction(), //Cham cong
           new Resignation(Strings.dbscreen_resignation),
           new Company(Strings.dbscreen_cpny),
         ],
